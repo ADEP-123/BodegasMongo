@@ -72,3 +72,28 @@ db.inventarios.aggregate([
         }
     }
 ]);
+
+//4. Insertar un producto y asigne una cantidad inicial del mismo en la tabla inventarios en una de las bodegas por default
+db.productros.insertOne({
+    _id: 4521,
+    nombre: 'producto0',
+    descripcion: 'producto0',
+    estado: 1,
+    created_by: 16,
+    update_by: null,
+    created_at: currentDate,
+    updated_at: currentDate,
+    deleted_at: null
+});
+
+db.inventarios.insertOne({
+    _id: 122313,
+    id_bodega: 12,
+    id_producto: 4521,
+    cantidad: 100,
+    created_by: null,
+    created_at: currentDate,
+    updated_at: null,
+    deleted_at: null
+});
+
