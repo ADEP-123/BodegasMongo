@@ -1,0 +1,28 @@
+const currentDate = new Date();
+//Consultas
+
+//1. Listar todas las bodegas alfabéticamente
+use("db_bodegas_mongo");
+db.bodegas.aggregate([
+    {
+        $project: {
+            ID: "$_id",
+            Bodega_Nombre: "$nombre",
+            Responsable_ID: "$id_responsable",
+            Estado: "$estado",
+            Creado_Por: "$created_by",
+            Actualizado_Por: "$update_by",
+            Fecha_Creacion: "$created_at",
+            Fecha_Actualizacion: "$update_by",
+            Fecha_Eliminacion: "$deleted_at"
+        }
+    },
+    {
+        $sort: {
+            nombre: 1
+        }
+    }
+]);
+
+
+
