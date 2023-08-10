@@ -1682,3 +1682,178 @@ db.inventarios.insertMany([
 ]);
 
 
+//Coleccion historiales
+db.createCollection("historiales", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["_id", "cantidad", "id_bodega_origen", "id_bodega_destino", "id_inventario"],
+            properties: {
+                _id: {
+                    bsonType: "int",
+                    description: "ID del historial"
+                },
+                cantidad: {
+                    bsonType: "int",
+                    description: "Cantidad en el historial"
+                },
+                id_bodega_origen: {
+                    bsonType: "int",
+                    description: "ID de la bodega de origen"
+                },
+                id_bodega_destino: {
+                    bsonType: "int",
+                    description: "ID de la bodega de destino"
+                },
+                id_inventario: {
+                    bsonType: "int",
+                    description: "ID del inventario asociado"
+                },
+                created_by: {
+                    bsonType: ["int", "null"],
+                    description: "ID del creador del historial"
+                },
+                update_by: {
+                    bsonType: ["int", "null"],
+                    description: "ID del usuario que realizó la actualización"
+                },
+                created_at: {
+                    bsonType: ["date", "null"],
+                    description: "Fecha de creación del historial"
+                },
+                updated_at: {
+                    bsonType: ["date", "null"],
+                    description: "Fecha de actualización del historial"
+                },
+                deleted_at: {
+                    bsonType: ["date", "null"],
+                    description: "Fecha de eliminación del historial"
+                }
+            }
+        }
+    }
+});
+
+db.historiales.insertMany([
+    {
+        "_id": 18,
+        "cantidad": 7,
+        "id_bodega_origen": 12,
+        "id_bodega_destino": 18,
+        "id_inventario": 18,
+        "created_by": 18,
+        "created_at": null,
+        "updated_at": null,
+        "deleted_at": null
+    },
+    {
+        "_id": 20,
+        "cantidad": 9,
+        "id_bodega_origen": 11,
+        "id_bodega_destino": 12,
+        "id_inventario": 18,
+        "created_by": 15,
+        "created_at": null,
+        "updated_at": null,
+        "deleted_at": null
+    },
+    {
+        "_id": 21,
+        "cantidad": 7,
+        "id_bodega_origen": 29,
+        "id_bodega_destino": 30,
+        "id_inventario": 36,
+        "created_by": null,
+        "created_at": new Date('2022-06-03 03:18:19'),
+        "updated_at": new Date('2022-06-03 03:18:19'),
+        "deleted_at": null
+    },
+    {
+        "_id": 22,
+        "cantidad": 666,
+        "id_bodega_origen": 26,
+        "id_bodega_destino": 24,
+        "id_inventario": 27,
+        "created_by": null,
+        "created_at": new Date('2022-06-03 03:19:14'),
+        "updated_at": new Date('2022-06-03 03:19:14'),
+        "deleted_at": null
+    },
+    {
+        "_id": 23,
+        "cantidad": 100,
+        "id_bodega_origen": 19,
+        "id_bodega_destino": 18,
+        "id_inventario": 41,
+        "created_by": null,
+        "created_at": new Date('2022-06-03 03:20:24'),
+        "updated_at": new Date('2022-06-03 03:20:24'),
+        "deleted_at": null
+    },
+    {
+        "_id": 24,
+        "cantidad": 25,
+        "id_bodega_origen": 19,
+        "id_bodega_destino": 26,
+        "id_inventario": 41,
+        "created_by": null,
+        "created_at": new Date('2022-06-03 03:27:47'),
+        "updated_at": new Date('2022-06-03 03:27:47'),
+        "deleted_at": null
+    },
+    {
+        "_id": 25,
+        "cantidad": 25,
+        "id_bodega_origen": 19,
+        "id_bodega_destino": 26,
+        "id_inventario": 41,
+        "created_by": null,
+        "created_at": new Date('2022-06-03 03:28:27'),
+        "updated_at": new Date('2022-06-03 03:28:27'),
+        "deleted_at": null
+    },
+    {
+        "_id": 26,
+        "cantidad": 300,
+        "id_bodega_origen": 18,
+        "id_bodega_destino": 12,
+        "id_inventario": 42,
+        "created_by": null,
+        "created_at": new Date('2022-06-03 03:51:23'),
+        "updated_at": new Date('2022-06-03 03:51:23'),
+        "deleted_at": null
+    },
+    {
+        "_id": 27,
+        "cantidad": 300,
+        "id_bodega_origen": 18,
+        "id_bodega_destino": 12,
+        "id_inventario": 42,
+        "created_by": null,
+        "created_at": new Date('2022-06-03 03:51:35'),
+        "updated_at": new Date('2022-06-03 03:51:35'),
+        "deleted_at": null
+    },
+    {
+        "_id": 28,
+        "cantidad": 1,
+        "id_bodega_origen": 12,
+        "id_bodega_destino": 11,
+        "id_inventario": 67,
+        "created_by": null,
+        "created_at": new Date('2022-07-11 22:17:10'),
+        "updated_at": new Date('2022-07-11 22:17:10'),
+        "deleted_at": null
+    },
+    {
+        "_id": 29,
+        "cantidad": 200,
+        "id_bodega_origen": 11,
+        "id_bodega_destino": 12,
+        "id_inventario": 75,
+        "created_by": 11,
+        "created_at": new Date('2022-07-21 21:24:15'),
+        "updated_at": new Date('2022-07-21 21:24:15'),
+        "deleted_at": null
+    }
+]);
