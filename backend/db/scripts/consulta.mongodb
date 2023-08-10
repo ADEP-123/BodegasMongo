@@ -100,12 +100,14 @@ db.inventarios.insertOne({
 
 //5. Permita insertar registros en la tabla inventarios, debe validar si la combinacion bodega producto ya existe
 use("db_bodegas_mongo");
-const total = db.inventarios.countDocuments({ id_bodega: 12, id_producto: 18 })
+const bodega = 11;
+const producto = 18;
+const total = db.inventarios.countDocuments({ id_bodega: bodega, id_producto: producto })
 if (total == 0) {
     db.inventarios.insertOne({
         _id: 122313,
-        id_bodega: 12,
-        id_producto: 18,
+        id_bodega: bodega,
+        id_producto: producto,
         cantidad: 100,
         created_by: null,
         created_at: currentDate,
@@ -114,5 +116,60 @@ if (total == 0) {
     });
 }
 
+//6. Query que permita trasladar cantidades de un producto de  una bodega a otra, debe validar que la cantidad a trasladar exista en la bodega de donde sale si no enviar un mensaje
 
+use("db_bodegas_mongo");
+const cantidad = 100;
+const bodega1 = 12;
+const bodega2 = 12;
+const productoId = 18;
+db.inventarios.aggregate([
+    {
+        $match: { id_bodega: bodega1, id_producto: productoId }
+    },
+    {
+        $project: {
+            _id: 0,
+            cantidad: 1,
+        }
+    }
+]);
+
+// aca iria uno que valide que exista un resultado y extraiga la cantidad
+const cantidadExistene = 50
+
+if (cantidadExistene > cantidad) {
+    //validamos que exista en la bodega 2
+    db.inventarios.aggregate([
+        {
+            $match: { id_bodega: bodega2, id_producto: productoId }
+        },
+        {
+            $project: {
+                _id: 0,
+                cantidad: 1,
+            }
+        }
+    ]);
+    db.inventarios.updateOne(
+        { _id: bodega1 },
+        { $set: { cantidad: { $subtract: ["$cantidad", cantidad] } } }
+    );
+    //aca se validaria si existe entonces haga esto
+    db.inventarios.updateOne(
+        { _id: bodega2 },
+        { $set: { cantidad: { $add: ["$cantidad", cantidad] } } }
+    );
+    // Si no existe haga esto
+    db.inventarios.insertOne({
+        _id: 2311123456,
+        id_bodega: id_bodega2,
+        id_producto: productoId,
+        cantidad: cantidad,
+        created_by: null,
+        created_at: currentDate,
+        updated_at: null,
+        deleted_at: null
+    });
+}
 
