@@ -1,6 +1,7 @@
 use("db_bodegas_mongo");
 const currentDate = new Date();
 
+
 //Coleccion usuers
 db.createCollection("users", {
     // capped: true,
@@ -63,7 +64,6 @@ db.createCollection("users", {
         }
     }
 });
-
 
 db.users.insertMany([
     {
@@ -208,6 +208,8 @@ db.users.insertMany([
     }
 ]);
 
+
+//Coleccion productos
 db.createCollection("productos", {
     validator: {
         $jsonSchema: {
@@ -771,6 +773,388 @@ db.productos.insertMany([
         update_by: null,
         created_at: new Date('2023-05-25 03:52:26'),
         updated_at: new Date('2023-05-25 03:52:26'),
+        deleted_at: null
+    }
+]);
+
+
+//Coleccion bodegas
+db.createCollection("bodegas", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["_id", "nombre", "id_responsable", "estado"],
+            properties: {
+                _id: {
+                    bsonType: "int",
+                    description: "ID de la bodega"
+                },
+                nombre: {
+                    bsonType: "string",
+                    description: "Nombre de la bodega"
+                },
+                id_responsable: {
+                    bsonType: "int",
+                    description: "ID del responsable de la bodega"
+                },
+                estado: {
+                    bsonType: "int",
+                    description: "Estado de la bodega"
+                },
+                created_by: {
+                    bsonType: ["int", "null"],
+                    description: "ID del creador de la bodega"
+                },
+                update_by: {
+                    bsonType: ["int", "null"],
+                    description: "ID del usuario que realizó la actualización"
+                },
+                created_at: {
+                    bsonType: ["date", "null"],
+                    description: "Fecha de creación de la bodega"
+                },
+                updated_at: {
+                    bsonType: ["date", "null"],
+                    description: "Fecha de actualización de la bodega"
+                },
+                deleted_at: {
+                    bsonType: ["date", "null"],
+                    description: "Fecha de eliminación de la bodega"
+                }
+            }
+        }
+    }
+});
+
+db.bodegas.insertMany([
+    {
+        _id: 11,
+        nombre: 'bodega0',
+        id_responsable: 16,
+        estado: 1,
+        created_by: 16,
+        update_by: null,
+        created_at: new Date('2022-06-02 15:33:48'),
+        updated_at: null,
+        deleted_at: null
+    },
+    {
+        _id: 12,
+        nombre: 'bodega1',
+        id_responsable: 18,
+        estado: 1,
+        created_by: 18,
+        update_by: null,
+        created_at: new Date('2022-06-02 15:33:48'),
+        updated_at: null,
+        deleted_at: null
+    },
+    {
+        _id: 13,
+        nombre: 'bodega2',
+        id_responsable: 18,
+        estado: 1,
+        created_by: 18,
+        update_by: null,
+        created_at: new Date('2022-06-02 15:33:48'),
+        updated_at: null,
+        deleted_at: null
+    }, {
+        _id: 18,
+        nombre: 'bodega7',
+        id_responsable: 17,
+        estado: 1,
+        created_by: 17,
+        update_by: null,
+        created_at: new Date('2022-06-02 15:33:48'),
+        updated_at: null,
+        deleted_at: null
+    },
+    {
+        _id: 19,
+        nombre: 'bodega8',
+        id_responsable: 11,
+        estado: 1,
+        created_by: 11,
+        update_by: null,
+        created_at: new Date('2022-06-02 15:33:48'),
+        updated_at: null,
+        deleted_at: null
+    },
+    {
+        _id: 20,
+        nombre: 'bodega9',
+        id_responsable: 18,
+        estado: 1,
+        created_by: 18,
+        update_by: null,
+        created_at: new Date('2022-06-02 15:33:48'),
+        updated_at: null,
+        deleted_at: null
+    },
+    {
+        _id: 22,
+        nombre: 'jsjsjss',
+        id_responsable: 13,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        created_at: new Date('2022-06-02 21:30:47'),
+        updated_at: new Date('2022-06-02 21:30:47'),
+        deleted_at: null
+    },
+    {
+        _id: 23,
+        nombre: 'leeche',
+        id_responsable: 13,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        created_at: new Date('2022-06-02 21:43:08'),
+        updated_at: new Date('2022-06-02 21:43:08'),
+        deleted_at: null
+    },
+    {
+        _id: 24,
+        nombre: 'soto1',
+        id_responsable: 15,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        created_at: new Date('2022-06-02 21:46:40'),
+        updated_at: new Date('2022-06-02 21:46:40'),
+        deleted_at: null
+    },
+    {
+        _id: 25,
+        nombre: 'soto2',
+        id_responsable: 15,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        created_at: new Date('2022-06-02 21:47:29'),
+        updated_at: new Date('2022-06-02 21:47:29'),
+        deleted_at: null
+    },
+    {
+        _id: 26,
+        nombre: 'prueba',
+        id_responsable: 12,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        created_at: new Date('2022-06-02 21:47:48'),
+        updated_at: new Date('2022-06-02 21:47:48'),
+        deleted_at: null
+    },
+    {
+        _id: 27,
+        nombre: 'fsfdf',
+        id_responsable: 13,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        created_at: new Date('2022-06-02 21:48:00'),
+        updated_at: new Date('2022-06-02 21:48:00'),
+        deleted_at: null
+    },
+    {
+        _id: 28,
+        nombre: 'prueba',
+        id_responsable: 12,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        created_at: new Date('2022-06-03 00:10:32'),
+        updated_at: new Date('2022-06-03 00:10:32'),
+        deleted_at: null
+    },
+    {
+        _id: 29,
+        nombre: 'bodegajuanpablo',
+        id_responsable: 19,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        created_at: new Date('2022-06-03 00:41:51'),
+        updated_at: new Date('2022-06-03 00:41:51'),
+        deleted_at: null
+    },
+    {
+        _id: 30,
+        nombre: 'micasa',
+        id_responsable: 18,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        created_at: new Date('2022-06-03 01:31:09'),
+        updated_at: new Date('2022-06-03 01:31:09'),
+        deleted_at: null
+    },
+    {
+        _id: 31,
+        nombre: 'casamedrano',
+        id_responsable: 17,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        created_at: new Date('2022-06-03 03:21:32'),
+        updated_at: new Date('2022-06-03 03:21:32'),
+        deleted_at: null
+    },
+    {
+        _id: 32,
+        nombre: 'centro',
+        id_responsable: 18,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        created_at: new Date('2022-06-03 03:33:19'),
+        updated_at: new Date('2022-06-03 03:33:19'),
+        deleted_at: null
+    },
+    // ... (Registros posteriores)
+    {
+        _id: 35,
+        nombre: 'bodega35',
+        id_responsable: 11,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        created_at: new Date('2022-06-24 22:30:37'),
+        updated_at: new Date('2022-06-24 22:30:37'),
+        deleted_at: null
+    },
+    {
+        _id: 36,
+        nombre: 'asdefg',
+        id_responsable: 11,
+        estado: 1,
+        created_by: 11,
+        update_by: null,
+        created_at: new Date('2022-06-29 02:24:49'),
+        updated_at: new Date('2022-06-29 02:24:49'),
+        deleted_at: null
+    },
+    {
+        _id: 37,
+        nombre: 'bodega fg',
+        id_responsable: 11,
+        estado: 1,
+        created_by: 11,
+        update_by: null,
+        created_at: new Date('2022-06-29 02:25:17'),
+        updated_at: new Date('2022-06-29 02:25:17'),
+        deleted_at: null
+    },
+    {
+        _id: 38,
+        nombre: 'bodega fg',
+        id_responsable: 11,
+        estado: 1,
+        created_by: 11,
+        update_by: null,
+        created_at: new Date('2022-06-29 02:25:40'),
+        updated_at: new Date('2022-06-29 02:25:40'),
+        deleted_at: null
+    },
+    {
+        _id: 39,
+        nombre: 'bodega fg 2',
+        id_responsable: 11,
+        estado: 1,
+        created_by: 11,
+        update_by: null,
+        created_at: new Date('2022-06-29 02:28:31'),
+        updated_at: new Date('2022-06-29 02:28:31'),
+        deleted_at: null
+    },
+    {
+        _id: 40,
+        nombre: 'bodega fg 2',
+        id_responsable: 11,
+        estado: 1,
+        created_by: 11,
+        update_by: null,
+        created_at: new Date('2022-06-29 02:28:44'),
+        updated_at: new Date('2022-06-29 02:28:44'),
+        deleted_at: null
+    },
+    {
+        _id: 41,
+        nombre: 'Bodega 13.2',
+        id_responsable: 11,
+        estado: 1,
+        created_by: 11,
+        update_by: null,
+        created_at: new Date('2022-07-01 20:29:51'),
+        updated_at: new Date('2022-07-01 20:29:51'),
+        deleted_at: null
+    },
+    {
+        _id: 42,
+        nombre: 'Bodega Developer 13.2',
+        id_responsable: 11,
+        estado: 1,
+        created_by: 11,
+        update_by: null,
+        created_at: new Date('2022-07-01 20:30:24'),
+        updated_at: new Date('2022-07-01 20:30:24'),
+        deleted_at: null
+    },
+    {
+        _id: 43,
+        nombre: 'Bodega Developer 13.2',
+        id_responsable: 11,
+        estado: 1,
+        created_by: 11,
+        update_by: null,
+        created_at: new Date('2022-07-11 18:37:11'),
+        updated_at: new Date('2022-07-11 18:37:11'),
+        deleted_at: null
+    },
+    {
+        _id: 44,
+        nombre: 'Bodega 59',
+        id_responsable: 11,
+        estado: 1,
+        created_by: 11,
+        update_by: null,
+        created_at: new Date('2022-07-11 18:44:50'),
+        updated_at: new Date('2022-07-11 18:44:50'),
+        deleted_at: null
+    },
+    {
+        _id: 48,
+        nombre: 'Bodega Anderson Atuesta',
+        id_responsable: 11,
+        estado: 11,
+        created_by: null,
+        update_by: null,
+        created_at: new Date('2022-07-21 19:57:05'),
+        updated_at: new Date('2022-07-21 19:57:05'),
+        deleted_at: null
+    },
+    {
+        _id: 49,
+        nombre: 'Bodega Anderson Atuesta555',
+        id_responsable: 11,
+        estado: 11,
+        created_by: null,
+        update_by: null,
+        created_at: new Date('2022-07-21 21:27:13'),
+        updated_at: new Date('2022-07-21 21:27:13'),
+        deleted_at: null
+    },
+    {
+        _id: 50,
+        nombre: 'A Bodega',
+        id_responsable: 11,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        created_at: new Date('2023-05-25 01:02:57'),
+        updated_at: new Date('2023-05-25 01:02:57'),
         deleted_at: null
     }
 ]);
