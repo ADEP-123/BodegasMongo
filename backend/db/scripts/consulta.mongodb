@@ -24,5 +24,17 @@ db.bodegas.aggregate([
     }
 ]);
 
-
+//2. Crear una bodega
+use("db_bodegas_mongo");
+db.bodegas.insertOne({
+    _id: 1,
+    nombre: "Bodega A",
+    id_responsable: 101,
+    estado: 1,
+    created_by: 201,
+    update_by: null,
+    created_at: currentDate,
+    updated_at: currentDate,
+    deleted_at: null
+});
 
