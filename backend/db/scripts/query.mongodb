@@ -1,0 +1,210 @@
+use("db_bodegas_mongo");
+const currentDate = new Date();
+
+//Coleccion usuers
+db.createCollection("users", {
+    // capped: true,
+    // size: 640,
+    // max: 5,
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["_id", "nombre", "email", "estado", "password"],
+            properties: {
+                _id: {
+                    bsonType: "int",
+                    description: "ID del usuario"
+                },
+                nombre: {
+                    bsonType: "string",
+                    description: "Nombre del usuario"
+                },
+                email: {
+                    bsonType: "string",
+                    description: "Correo electrónico del usuario"
+                },
+                email_verified_at: {
+                    bsonType: ["date", "null"], // Cambio "null" en vez de null
+                    description: "Fecha de verificación de correo electrónico"
+                },
+                estado: {
+                    bsonType: "int",
+                    description: "id del estado del usuario"
+                },
+                created_by: {
+                    bsonType: ["int", "null"], // Cambio "null" en vez de null
+                    description: "ID del creador del usuario"
+                },
+                update_by: {
+                    bsonType: ["int", "null"], // Cambio "null" en vez de null
+                    description: "ID del usuario que realizó la actualización"
+                },
+                foto: {
+                    bsonType: ["string", "null"], // Cambio "null" en vez de null
+                    description: "URL de la foto del usuario"
+                },
+                password: {
+                    bsonType: "string",
+                    description: "Contraseña del usuario"
+                },
+                created_at: {
+                    bsonType: ["date", "null"], // Cambio "null" en vez de null
+                    description: "Fecha de creación del usuario"
+                },
+                updated_at: {
+                    bsonType: ["date", "null"], // Cambio "null" en vez de null
+                    description: "Fecha de actualización del usuario"
+                },
+                deleted_at: {
+                    bsonType: ["date", "null"], // Cambio "null" en vez de null
+                    description: "Fecha de eliminación del usuario"
+                }
+            }
+        }
+    }
+});
+
+
+db.users.insertMany([
+    {
+        _id: 11,
+        nombre: 'juan0',
+        email: 'juan0@hotmail.com',
+        email_verified_at: currentDate,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        foto: null,
+        password: '12345',
+        created_at: currentDate,
+        updated_at: currentDate,
+        deleted_at: null
+    },
+    {
+        _id: 12,
+        nombre: 'juan1',
+        email: 'juan1@hotmail.com',
+        email_verified_at: currentDate,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        foto: null,
+        password: '12345',
+        created_at: currentDate,
+        updated_at: currentDate,
+        deleted_at: null
+    },
+    {
+        _id: 13,
+        nombre: 'juan2',
+        email: 'juan2@hotmail.com',
+        email_verified_at: currentDate,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        foto: null,
+        password: '12345',
+        created_at: currentDate,
+        updated_at: currentDate,
+        deleted_at: null
+    },
+    {
+        _id: 14,
+        nombre: 'juan3',
+        email: 'juan3@hotmail.com',
+        email_verified_at: currentDate,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        foto: null,
+        password: '12345',
+        created_at: currentDate,
+        updated_at: currentDate,
+        deleted_at: null
+    },
+    {
+        _id: 15,
+        nombre: 'juan4',
+        email: 'juan4@hotmail.com',
+        email_verified_at: currentDate,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        foto: null,
+        password: '12345',
+        created_at: currentDate,
+        updated_at: currentDate,
+        deleted_at: null
+    },
+    {
+        _id: 16,
+        nombre: 'juan5',
+        email: 'juan5@hotmail.com',
+        email_verified_at: currentDate,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        foto: null,
+        password: '12345',
+        created_at: currentDate,
+        updated_at: currentDate,
+        deleted_at: null
+    },
+    {
+        _id: 17,
+        nombre: 'juan6',
+        email: 'juan6@hotmail.com',
+        email_verified_at: currentDate,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        foto: null,
+        password: '12345',
+        created_at: currentDate,
+        updated_at: currentDate,
+        deleted_at: null
+    },
+    {
+        _id: 18,
+        nombre: 'juan7',
+        email: 'juan7@hotmail.com',
+        email_verified_at: currentDate,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        foto: null,
+        password: '12345',
+        created_at: currentDate,
+        updated_at: currentDate,
+        deleted_at: null
+    },
+    {
+        _id: 19,
+        nombre: 'juan8',
+        email: 'juan8@hotmail.com',
+        email_verified_at: currentDate,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        foto: null,
+        password: '12345',
+        created_at: currentDate,
+        updated_at: currentDate,
+        deleted_at: null
+    },
+    {
+        _id: 20,
+        nombre: 'juan9',
+        email: 'juan9@hotmail.com',
+        email_verified_at: currentDate,
+        estado: 1,
+        created_by: null,
+        update_by: null,
+        foto: null,
+        password: '12345',
+        created_at: currentDate,
+        updated_at: currentDate,
+        deleted_at: null
+    }
+]);
+
