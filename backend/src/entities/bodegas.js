@@ -26,8 +26,26 @@ class Bodegas {
             ]
             return collection.aggregate(pipeline).toArray();
         } catch (error) {
-            console.log(error);
-            throw error; 
+            throw error;
+        }
+    }
+
+    async postNewBodega(id, nombre, responsable, estado, creador, actualizador) {
+        try {
+            const collection = await collectionGen("bodegas")
+            return collection.insertOne({
+                _id: id,
+                nombre: nombre,
+                id_responsable: responsable,
+                estado: estado,
+                created_by: creador,
+                update_by: actualizador,
+                created_at: new Date(),
+                updated_at: null,
+                deleted_at: null
+            });
+        } catch (error) {
+            throw error;
         }
     }
 
