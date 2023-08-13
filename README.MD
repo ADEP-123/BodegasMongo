@@ -63,6 +63,7 @@ Ejercicio practico para aprendizaje de mongo, se creo una base de datos simuland
 - Descripcion: Endpoint que permite listar todas las bodegas alfabéticamente
 
 2. Crear una bodega:
+
    - UrlDefault: http://127.10.10.10:5010/campus/post/bodegas
    - Metodo: post
    - Data: Body
@@ -77,11 +78,29 @@ Ejercicio practico para aprendizaje de mongo, se creo una base de datos simuland
        "creador": 121
      }
      ```
+
 3. Listar productos en orden descendente por el campo total:
+
    - UrlDefault: http://127.10.10.10:5010/campus/get/productos
    - Metodo: get
    - Data: NN
    - Descripcion: Endpoint que permite listar productos en orden descendente por el campo total
+
+4. Insertar un producto y asigne una cantidad inicial del mismo en la tabla inventarios en una de las bodegas por default:
+   - UrlDefault: http://127.10.10.10:5010/campus/post/productos
+   - Metodo: post
+   - Data: body
+   - Descripcion: Endpoint que permite Insertar un producto y asigne una cantidad inicial del mismo en la tabla inventarios en una de las bodegas por default
+   - Body esperado:
+     ```json
+     {
+       "id": 999999,
+       "nombre": "Shampoo",
+       "descripcion": "shampoo pelo seco",
+       "estado": 1,
+       "creador": 11
+     }
+     ```
 
 # Creador:
 
