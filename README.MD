@@ -49,10 +49,14 @@ Ejercicio practico para aprendizaje de mongo, se creo una base de datos simuland
 
 ---
 
-## Consultas SQL
+## Consultas
 
 ---
+1. Listar todas las bodegas alfabéticamente:
 
+ - UrlDefault: http://127.10.10.10:5010/campus/get/bodegas
+ - Metodo: get
+ - Descripcion: Endpoint que permite listar todas las bodegas alfabéticamente
 
 # Creador:
 
