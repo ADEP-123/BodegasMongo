@@ -1,4 +1,4 @@
-import collectionGen from "../utils/db.js";
+import { collectionGen, startTransaction } from "../utils/db.js";
 class Inventarios {
     constructor() { }
 

@@ -3,10 +3,10 @@ import { postBodegaService, postInventarioService, postProductoService } from ".
 
 const postBodegaController = async (req, res, next) => {
     try {
-        const { id, nombre, responsable, estado, creador } = req.body
+        const { nombre, responsable, estado, creador } = req.body
         const comprobarCreador = await comprobarUsuarioService(creador)
         if (comprobarCreador != 0) {
-            const result = await postBodegaService(id, nombre, responsable, estado, creador)
+            const result = await postBodegaService(nombre, responsable, estado, creador)
             res.status(200).json({ message: "Registro insertado con exito", result })
 
         } else {

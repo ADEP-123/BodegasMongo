@@ -1,4 +1,4 @@
-import collectionGen from "../utils/db.js";
+import { collectionGen, startTransaction } from "../utils/db.js";
 class Bodegas {
     constructor() { }
     async getAllBodegas() {
@@ -31,43 +31,43 @@ class Bodegas {
         }
     }
 
-    async postNewBodega(id, nombre, responsable, estado, creador) {
-        try {
-            const collection = await collectionGen("bodegas")
-            const result = await collection.insertOne({
-                _id: id,
-                nombre: nombre,
-                id_responsable: responsable,
-                estado: estado,
-                created_by: creador,
-                update_by: null,
-                created_at: new Date(),
-                updated_at: null,
-                deleted_at: null
-            });
-            return result
-        } catch (error) {
-            throw error
-            // if (error.name == "MongoServerError") {
-            //     const errorSchema = error.errInfo.details.schemaRulesNotSatisfied;
-            //     if (errorSchema.length != 0) {
-            //         let propiedades = errorSchema[0].propertiesNotSatisfied
-            //         let arrCaract = []
-            //         propiedades.forEach(element => {
-            //             arrCaract.push(element.description)
-            //         });
-            //         console.log(arrCaract);
-            //         error = {
-            //             error: "Error en tipo de datos",
-            //             datosErroneos: arrCaract
-            //         }
-            //     }
-            //     throw error
-            // } else {
-            //     throw error;
-            // }
-        }
-    }
+     async postNewBodega(id, nombre, responsable, estado, creador) {
+         try {
+             const collection = await collectionGen("bodegas")
+             const result = await collection.insertOne({
+                 _id: id,
+                 nombre: nombre,
+                 id_responsable: responsable,
+                 estado: estado,
+                 created_by: creador,
+                 update_by: null,
+                 created_at: new Date(),
+                 updated_at: null,
+                 deleted_at: null
+             });
+             return result
+         } catch (error) {
+             throw error
+             // if (error.name == "MongoServerError") {
+             //     const errorSchema = error.errInfo.details.schemaRulesNotSatisfied;
+             //     if (errorSchema.length != 0) {
+             //         let propiedades = errorSchema[0].propertiesNotSatisfied
+             //         let arrCaract = []
+             //         propiedades.forEach(element => {
+             //             arrCaract.push(element.description)
+             //         });
+             //         console.log(arrCaract);
+             //         error = {
+             //             error: "Error en tipo de datos",
+             //             datosErroneos: arrCaract
+             //         }
+             //     }
+             //     throw error
+             // } else {
+             //     throw error;
+             // }
+         }
+     }
 
 }
 export default Bodegas;

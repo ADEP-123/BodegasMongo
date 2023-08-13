@@ -5,4 +5,13 @@ const collectionGen = async (coleccion) => {
     const newCollection = db.collection(coleccion);
     return newCollection;
 }
-export default collectionGen
+
+const startTransaction = async (coleccion) => {
+    const db = await connection();
+    const transaccion = db.startTransaction();
+    return transaccion;
+}
+export {
+    collectionGen,
+    startTransaction
+}
