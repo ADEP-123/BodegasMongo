@@ -39,11 +39,12 @@ const postProductoController = async (req, res, next) => {
 
 const postInventarioController = async (req, res, next) => {
     try {
-        const { id, bodega, producto, cantidad, creador } = req.body
+        const { bodega, producto, cantidad, creador } = req.body
         let result = await getCombinationProductStorageAmount(bodega, producto);
         if (result == 0) {
-            result = await postInventarioService(id, bodega, producto, cantidad, creador)
-            res.status(200).json({ message: "Inventario creado con exito" })
+            result = await postInventarioService(bodega, producto, cantidad, creador)
+            const id = result.insertedId
+            res.status(200).json({ message: `Inventario ${id} creado con exito` })
         } else {
             res.status(500).json({ message: "Esa combinacion de bodega y producto ya existen" })
         }
