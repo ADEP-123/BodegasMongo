@@ -1,12 +1,13 @@
 import { Router } from 'express';
 import { postBodegaController, postInventarioController, postProductoController } from '../controllers/postDataController.js';
 import { mongoErrorHandlingMiddleware } from '../middleware/mongoErrors.js';
+import { middlewareContentLengthBodegas, middlewareContentLengthInventario, middlewareContentLengthProductos } from '../middleware/contentLength.js';
 
 const postInitRoute = () => {
     const router = Router()
-    router.post("/bodegas", mongoErrorHandlingMiddleware, postBodegaController)
-    router.post("/productos", postProductoController)
-    router.post("/inventario", postInventarioController)
+    router.post("/bodegas", middlewareContentLengthBodegas, mongoErrorHandlingMiddleware, postBodegaController)
+    router.post("/productos", middlewareContentLengthProductos, postProductoController)
+    router.post("/inventario", middlewareContentLengthInventario, postInventarioController)
 
     return router;
 }
