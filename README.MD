@@ -74,7 +74,7 @@ Ejercicio practico para aprendizaje de mongo, se creo una base de datos simuland
        "nombre": "paco",
        "responsable": 1,
        "estado": 2,
-       "creador": 121
+       "creador": 10
      }
      ```
 
@@ -96,7 +96,21 @@ Ejercicio practico para aprendizaje de mongo, se creo una base de datos simuland
        "nombre": "Shampoo",
        "descripcion": "shampoo pelo seco",
        "estado": 1,
-       "creador": 11
+       "creador": 10
+     }
+     ```
+5. Insertar registros en la tabla inventarios, debe validar si la combinacion bodega producto ya existe:
+   - UrlDefault: http://127.10.10.10:5010/campus/post/inventario
+   - Data: body
+   - Metodo: post
+   - Descripcion: Endpoint que permite insertar registros en la tabla inventarios, debe validar si la combinacion bodega producto ya existe
+   - Body esperado:
+     ```json
+     {
+       "bodega": 12,
+       "producto": 48,
+       "cantidad": 100,
+       "creador": 1
      }
      ```
 
