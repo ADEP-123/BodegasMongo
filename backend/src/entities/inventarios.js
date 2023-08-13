@@ -1,6 +1,7 @@
 import collectionGen from "../utils/db.js";
 class Inventarios {
     constructor() { }
+
     async getAllProducts() {
         try {
             const collection = await collectionGen("inventarios");
@@ -37,6 +38,25 @@ class Inventarios {
                 }
             ]
             const result = collection.aggregate(pipeline).sort({ total: -1 }).toArray();
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async postNewInventario(id, bodega, producto, cantidad, creador) {
+        try {
+            const collection = await collectionGen("inventarios");
+            const result = collection.insertOne({
+                _id: id,
+                id_bodega: bodega,
+                id_producto: producto,
+                cantidad: cantidad,
+                created_by: creador,
+                created_at: new Date(),
+                updated_at: null,
+                deleted_at: null
+            });
             return result;
         } catch (error) {
             throw error;
