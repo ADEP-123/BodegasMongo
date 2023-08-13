@@ -13,7 +13,14 @@ const getAllProductsService = async () => {
     return result;
 };
 
+const getCombinationProductStorageAmount = async (bodega, producto) => {
+    const inventario = new Inventarios()
+    const result = await inventario.contarCombinacion(bodega, producto);
+    return result;
+};
+
 export {
     getAllBodegasService,
-    getAllProductsService
+    getAllProductsService,
+    getCombinationProductStorageAmount
 }

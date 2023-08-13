@@ -1,3 +1,4 @@
+import { getCombinationProductStorageAmount } from "../services/getServices.js";
 import { postBodegaService, postInventarioService, postProductoService } from "../services/postServices.js";
 
 const postBodegaController = async (req, res, next) => {
@@ -23,7 +24,23 @@ const postProductoController = async (req, res, next) => {
     }
 };
 
+const postInventarioController = async (req, res, next) => {
+    try {
+        const { id, bodega, producto, cantidad, creador } = req.body
+        let result = await getCombinationProductStorageAmount(bodega, producto);
+        if (result == 0) {
+            result = await postInventarioService(id, bodega, producto, cantidad, creador)
+            res.status(200).json({ message: "Inventario creado con exito" })
+        } else {
+            res.status(500).json({ message: "Esa combinacion de bodega y producto ya existen" })
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+};
+
 export {
     postBodegaController,
-    postProductoController
+    postProductoController,
+    postInventarioController
 }

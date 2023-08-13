@@ -63,5 +63,17 @@ class Inventarios {
         }
     }
 
+    async contarCombinacion(bodega, producto) {
+        try {
+            const collection = await collectionGen("inventarios");
+            const result = collection.countDocuments({ id_bodega: bodega, id_producto: producto });
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+
+
 }
 export default Inventarios;
