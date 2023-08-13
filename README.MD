@@ -1,4 +1,4 @@
-# Ejercicio bODEGAS_mONGO
+# Ejercicio Bodegas_Mongo
 
 ## Descripcion
 
