@@ -71,7 +71,7 @@ db.inventarios.aggregate([
             total: 1
         }
     }
-]);
+]).sort({ total: -1 });
 
 //4. Insertar un producto y asigne una cantidad inicial del mismo en la tabla inventarios en una de las bodegas por default
 use("db_bodegas_mongo");
