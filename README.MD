@@ -20,6 +20,7 @@ Ejercicio practico para aprendizaje de mongo, se creo una base de datos simuland
 2. Es necesario de tener Mongo instalado en su computadora en caso de no ser asi le recomiendo visitar el siguiente link: https://www.youtube.com/watch?v=2cWZ0lFbJoY
 3. Tambien es recomentable tener la extension `MongoDB for Vs Code`, en caso de no tenerla instalela, o utilize alguna otra plataforma que le permita ejecutar el archivo query para la creacin de las colecciones de la base de datos:
 4. Para utilizar la extension haga lo siguiente:
+
 - 4.1. Abra la extension desde el panel izquierdo de visual studio code, en el simbolo de la hoja
 - 4.2. En conecciones abra el panel de nueva coneccion
 - 4.3. Si tiene una conexion configurada desde Athlas copie el string de la conexion con los datos de usuario y contraseña del perfil creado, si va a utilizar la conexion de la base de datos actual use el siguiente link `mongodb+srv://admin:admin123456@cluster0.y7pgxmx.mongodb.net/`
@@ -41,6 +42,7 @@ Ejercicio practico para aprendizaje de mongo, se creo una base de datos simuland
 6. Ejecute el comando `npm run dev`.
 7. La consola le mostrara la direccion http donde esta corriendo el servidor, la cual de manera predeterminada es `http://127.10.10.10:5010`
 8. Para interactuar con los enpoints es recomendable usar una extension como Thunder Client, para ello siga los siguientes pasos:
+
 - 8.1. Descarge la extension Thunder Client desde visual studio code
 - 8.2. En el panel izquierdo seleccione la extension Thunder Client y posteriormente en new request
 - 8.3. Coloque la url en el panel de direccion de Thunder Client con el endpoint especifico
@@ -52,11 +54,29 @@ Ejercicio practico para aprendizaje de mongo, se creo una base de datos simuland
 ## Consultas
 
 ---
+
 1. Listar todas las bodegas alfabéticamente:
 
- - UrlDefault: http://127.10.10.10:5010/campus/get/bodegas
- - Metodo: get
- - Descripcion: Endpoint que permite listar todas las bodegas alfabéticamente
+- UrlDefault: http://127.10.10.10:5010/campus/get/bodegas
+- Metodo: get
+- Data: NN
+- Descripcion: Endpoint que permite listar todas las bodegas alfabéticamente
+
+2. Crear una bodega:
+   - UrlDefault: http://127.10.10.10:5010/campus/post/bodegas
+   - Metodo: post
+   - Data: Body
+   - Descripcion: Endpoint que permite crear una bodega
+   - Body esperado:
+     ```json
+     {
+       "id": 99999,
+       "nombre": "paco",
+       "responsable": 1,
+       "estado": 2,
+       "creador": 121
+     }
+     ```
 
 # Creador:
 
