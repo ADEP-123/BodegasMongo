@@ -73,6 +73,48 @@ class Inventarios {
         }
     }
 
+    async getCantidadCombinacion(bodega, producto) {
+        try {
+            const collection = await collectionGen("inventarios");
+            const result = collection.aggregate([
+                {
+                    $match: { id_bodega: bodega, id_producto: producto }
+                },
+                {
+                    $project: {
+                        _id: 0,
+                        cantidad: 1,
+                    }
+                }
+            ]).toArray();
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async updateCantidadInventario(bodega, producto, cantidad) {
+        try {
+            const collection = await collectionGen("inventarios");
+            const result = collection.updateOne(
+                {
+                    id_bodega: bodega,
+                    id_producto: producto
+                },
+                {
+                    $set: {
+                        cantidad: cantidad,
+                        updated_at: new Date()
+                    }
+                }
+            );
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+
 
 
 }

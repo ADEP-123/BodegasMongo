@@ -152,13 +152,29 @@ if (cantidadExistene > cantidad) {
         }
     ]);
     db.inventarios.updateOne(
-        { _id: bodega1 },
-        { $set: { cantidad: { $subtract: ["$cantidad", cantidad] } } }
+        {
+            id_bodega: bodega1,
+            id_producto: producto
+        },
+        {
+            $set: {
+                cantidad: { $subtract: ["$cantidad", cantidad] },
+                updated_at: new Date()
+            }
+        }
     );
     //aca se validaria si existe entonces haga esto
     db.inventarios.updateOne(
-        { _id: bodega2 },
-        { $set: { cantidad: { $add: ["$cantidad", cantidad] } } }
+        {
+            id_bodega: bodega2,
+            id_producto: producto
+        },
+        {
+            $set: {
+                cantidad: { $add: ["$cantidad", cantidad] },
+                updated_at: new Date()
+            }
+        }
     );
     // Si no existe haga esto
     db.inventarios.insertOne({
