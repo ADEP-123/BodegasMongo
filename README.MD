@@ -18,11 +18,11 @@ Ejercicio practico para aprendizaje de mongo, se creo una base de datos simuland
 
 1. Clonar el repositorio en su dispositivo
 2. Es necesario de tener Mongo instalado en su computadora en caso de no ser asi le recomiendo visitar el siguiente link: https://www.youtube.com/watch?v=2cWZ0lFbJoY
-3. Tambien es recomentable tener la extension `MongoDB for Vs Code`, en caso de no tenerla instalela, o utilize alguna otra plataforma que le permita ejecutar el archivo query para la creacin de las colecciones de la base de datos:
+3. Tambien es recomentable tener la extension `MongoDB for Vs Code`, en caso de no tenerla instalela, o utilize alguna otra plataforma que le permita ejecutar el archivo query para la creacion de las colecciones de la base de datos:
 4. Para utilizar la extension haga lo siguiente:
 
 - 4.1. Abra la extension desde el panel izquierdo de visual studio code, en el simbolo de la hoja
-- 4.2. En conecciones abra el panel de nueva coneccion
+- 4.2. En conexiones abra el panel de nueva conexion
 - 4.3. Si tiene una conexion configurada desde Athlas copie el string de la conexion con los datos de usuario y contraseña del perfil creado, si va a utilizar la conexion de la base de datos actual use el siguiente link `mongodb+srv://admin:admin123456@cluster0.y7pgxmx.mongodb.net/`
 - 4.3. Si no tiene una conexion configurada y desea hacerlo de manera local selecciona la opcion avanzada y luego presione conectar para hacerlo de manera local o configure los datos de la conexion.
 
@@ -34,7 +34,7 @@ Ejercicio practico para aprendizaje de mongo, se creo una base de datos simuland
 
 ### Si desea hacer uso de la API:
 
-1. Si desea crear la base de datos local siga los pases de el apartado anterior hasta el paso 4.
+1. Si desea crear la base de datos local siga los pases del apartado anterior hasta el paso 4.
 2. Revise que las configuraciones del archivo .env coincidan con las de su ordenador, si no es el caso cambielas.
 3. Abra un nuevo bloque de comandos desde el archivo del repositorio, si esta usando visual estudio puede hacerlo desde la pestaña terminal > new terminal.
 4. Con el comando "cd backend" ingrese a la carpeta backend.
@@ -70,13 +70,18 @@ Ejercicio practico para aprendizaje de mongo, se creo una base de datos simuland
    - Body esperado:
      ```json
      {
-       "id": 99999,
+       "id": 55555612,
        "nombre": "paco",
        "responsable": 1,
        "estado": 2,
        "creador": 121
      }
      ```
+3. Listar productos en orden descendente por el campo total:
+   - UrlDefault: http://127.10.10.10:5010/campus/get/productos
+   - Metodo: get
+   - Data: NN
+   - Descripcion: Endpoint que permite listar productos en orden descendente por el campo total
 
 # Creador:
 
