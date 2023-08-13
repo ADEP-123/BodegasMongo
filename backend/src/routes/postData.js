@@ -5,7 +5,7 @@ import { mongoErrorHandlingMiddleware } from '../middleware/mongoErrors.js';
 const postInitRoute = () => {
     const router = Router()
     router.post("/bodegas", mongoErrorHandlingMiddleware, postBodegaController)
-    router.post("/producto", postProductoController)
+    router.post("/productos", postProductoController)
     router.post("/inventario", postInventarioController)
 
     return router;

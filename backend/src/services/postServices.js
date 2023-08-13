@@ -2,9 +2,9 @@ import Bodegas from "../entities/bodegas.js";
 import Inventarios from "../entities/inventarios.js";
 import Productos from "../entities/productos.js";
 
-const postBodegaService = async (id, nombre, responsable, estado, creador, actualizador) => {
+const postBodegaService = async (id, nombre, responsable, estado, creador) => {
     const bodega = new Bodegas();
-    const result = await bodega.postNewBodega(id, nombre, responsable, estado, creador, actualizador);
+    const result = await bodega.postNewBodega(id, nombre, responsable, estado, creador);
     return result;
 };
 

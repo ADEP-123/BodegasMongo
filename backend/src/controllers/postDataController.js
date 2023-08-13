@@ -1,13 +1,21 @@
-import { getCombinationProductStorageAmount } from "../services/getServices.js";
+import { comprobarUsuarioService, getCombinationProductStorageAmount } from "../services/getServices.js";
 import { postBodegaService, postInventarioService, postProductoService } from "../services/postServices.js";
 
 const postBodegaController = async (req, res, next) => {
     try {
-        const { id, nombre, responsable, estado, creador, actualizador } = req.body
-        const result = await postBodegaService(id, nombre, responsable, estado, creador, actualizador)
-        res.status(200).json({ message: "Registro insertado con exito", result })
+        const { id, nombre, responsable, estado, creador } = req.body
+        const comprobarCreador = await comprobarUsuarioService(creador)
+        if (comprobarCreador != 0) {
+            const result = await postBodegaService(id, nombre, responsable, estado, creador)
+            res.status(200).json({ message: "Registro insertado con exito", result })
+            
+        } else {
+            res.status(500).json({ error: `Imposible realizar la insercion: el creador identificado con el id ${creador} no existe` })
+
+        }
+        console.log(comprobarCreador);
     } catch (error) {
-        res.status(500).json({ error })
+        res.status(500).json({ error: error.message })
     }
 };
 

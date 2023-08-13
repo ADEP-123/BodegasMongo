@@ -1,5 +1,6 @@
 import Bodegas from "../entities/bodegas.js";
 import Inventarios from "../entities/inventarios.js";
+import Users from "../entities/user.js";
 
 const getAllBodegasService = async () => {
     const bodega = new Bodegas()
@@ -25,9 +26,16 @@ const getCantidadCombinacionService = async (bodega, producto) => {
     return result;
 };
 
+const comprobarUsuarioService = async (id) => {
+    const usuario = new Users()
+    const result = await usuario.comprobarUsuario(id); 
+    return result
+}
+
 export {
     getAllBodegasService,
     getAllProductsService,
     getCombinationProductStorageAmount,
-    getCantidadCombinacionService
+    getCantidadCombinacionService,
+    comprobarUsuarioService
 }

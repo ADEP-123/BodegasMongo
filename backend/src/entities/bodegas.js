@@ -31,7 +31,7 @@ class Bodegas {
         }
     }
 
-    async postNewBodega(id, nombre, responsable, estado, creador, actualizador) {
+    async postNewBodega(id, nombre, responsable, estado, creador) {
         try {
             const collection = await collectionGen("bodegas")
             const result = await collection.insertOne({
@@ -40,7 +40,7 @@ class Bodegas {
                 id_responsable: responsable,
                 estado: estado,
                 created_by: creador,
-                update_by: actualizador,
+                update_by: null,
                 created_at: new Date(),
                 updated_at: null,
                 deleted_at: null
