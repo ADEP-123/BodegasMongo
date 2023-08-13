@@ -24,7 +24,8 @@ class Bodegas {
                     }
                 }
             ]
-            return collection.aggregate(pipeline).toArray();
+            const result = collection.aggregate(pipeline).toArray();
+            return result;
         } catch (error) {
             throw error;
         }
@@ -33,7 +34,7 @@ class Bodegas {
     async postNewBodega(id, nombre, responsable, estado, creador, actualizador) {
         try {
             const collection = await collectionGen("bodegas")
-            return collection.insertOne({
+            const result = await collection.insertOne({
                 _id: id,
                 nombre: nombre,
                 id_responsable: responsable,
@@ -44,8 +45,27 @@ class Bodegas {
                 updated_at: null,
                 deleted_at: null
             });
+            return result
         } catch (error) {
-            throw error;
+            throw error
+            // if (error.name == "MongoServerError") {
+            //     const errorSchema = error.errInfo.details.schemaRulesNotSatisfied;
+            //     if (errorSchema.length != 0) {
+            //         let propiedades = errorSchema[0].propertiesNotSatisfied
+            //         let arrCaract = []
+            //         propiedades.forEach(element => {
+            //             arrCaract.push(element.description)
+            //         });
+            //         console.log(arrCaract);
+            //         error = {
+            //             error: "Error en tipo de datos",
+            //             datosErroneos: arrCaract
+            //         }
+            //     }
+            //     throw error
+            // } else {
+            //     throw error;
+            // }
         }
     }
 

@@ -6,7 +6,7 @@ const postBodegaController = async (req, res, next) => {
         const result = await postBodegaService(id, nombre, responsable, estado, creador, actualizador)
         res.status(200).json({ message: "Registro insertado con exito", result })
     } catch (error) {
-        res.status(500).json({ error: error.message })
+        res.status(500).json({error})
     }
 };
 
