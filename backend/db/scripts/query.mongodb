@@ -1890,9 +1890,9 @@ db.historiales.insertMany([
 // Coleccion de contadores
 db.createCollection("counters")
 db.counters.insertMany([
-    { _id: "userId", sequence_value: 10 },
-    { _id: "productId", sequence_value: 50 },
-    { _id: "bodegaId", sequence_value: 30 },
-    { _id: "inventarioId", sequence_value: 47 },
-    { _id: "historialId", sequence_value: 11 }
+    { _id: "usersId", sequence_value: 10 },
+    { _id: "productosId", sequence_value: 50 },
+    { _id: "bodegasId", sequence_value: 30 },
+    { _id: "inventariosId", sequence_value: 47 },
+    { _id: "historialesId", sequence_value: 11 }
 ]);

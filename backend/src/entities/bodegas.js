@@ -1,4 +1,4 @@
-import { collectionGen, startTransaction } from "../utils/db.js";
+import { collectionGen } from "../utils/db.js";
 class Bodegas {
     constructor() { }
     async getAllBodegas() {
@@ -31,24 +31,12 @@ class Bodegas {
         }
     }
 
-    async postNewBodega(nombre, responsable, estado, creador) {
-        const session = await startTransaction(); // Iniciar la transacción
-
+    async postNewBodega(id, nombre, responsable, estado, creador) {
         try {
-            const countersCollection = await collectionGen("counters");
-            const counterDoc = await countersCollection.findOneAndUpdate(
-                { _id: "bodegaId" },
-                { $inc: { sequence_value: 1 } },
-                { session, returnOriginal: false, upsert: true }
-            );
-
-            const newBodegaId = counterDoc.value.sequence_value + 1;
-            console.log("id:", newBodegaId);
-
             const bodegasCollection = await collectionGen("bodegas");
             const result = await bodegasCollection.insertOne(
                 {
-                    _id: newBodegaId,
+                    _id: id,
                     nombre: nombre,
                     id_responsable: responsable,
                     estado: estado,
@@ -58,16 +46,9 @@ class Bodegas {
                     updated_at: null,
                     deleted_at: null
                 },
-                { session }
             );
-
-            await session.commitTransaction();
-            session.endSession();
-
             return result;
         } catch (error) {
-            await session.abortTransaction();
-            session.endSession();
             throw error;
         }
     }

@@ -1,24 +1,12 @@
-import { collectionGen, startTransaction } from "../utils/db.js";
+import { collectionGen } from "../utils/db.js";
 class Productos {
     constructor() { }
 
-    async postNewProduct(nombre, descripcion, estado, creador) {
-        const session = await startTransaction();
-
-        try {
-            const countersCollection = await collectionGen("counters");
-            const counterDoc = await countersCollection.findOneAndUpdate(
-                { _id: "productId" },
-                { $inc: { sequence_value: 1 } },
-                { session, returnOriginal: false, upsert: true }
-            );
-
-            const newBodegaId = counterDoc.value.sequence_value + 1;
-            // console.log("id:", newBodegaId);
-
+    async postNewProduct(id,nombre, descripcion, estado, creador) {
+        try {        
             const productosCollection = await collectionGen("productos");
             const result = productosCollection.insertOne({
-                _id: newBodegaId,
+                _id: id,
                 nombre: nombre,
                 descripcion: descripcion,
                 estado: estado,
@@ -28,16 +16,10 @@ class Productos {
                 updated_at: null,
                 deleted_at: null
             });
-
-            await session.commitTransaction();
-            session.endSession();
-
             return result;
         } catch (error) {
-            await session.abortTransaction();
-            session.endSession();
             throw error;
-        }
+        }       
     }
 
 }
