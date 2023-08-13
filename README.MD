@@ -113,6 +113,20 @@ Ejercicio practico para aprendizaje de mongo, se creo una base de datos simuland
        "creador": 1
      }
      ```
+6. Query que permita trasladar cantidades de un producto de una bodega a otra, debe validar que la cantidad a trasladar exista en la bodega de donde sale si no enviar un mensaje:
+   - UrlDefault: http://127.10.10.10:5010/campus/put/inventario
+   - Data: body
+   - Metodo: post
+   - Descripcion: Endpoint que permita trasladar cantidades de un producto de una bodega a otra, debe validar que la cantidad a trasladar exista en la bodega de donde sale si no enviar un mensaje
+   - Body esperado:
+     ```json
+     {
+       "bodega1": 13,
+       "bodega2": 156,
+       "producto": 18,
+       "cantidad": 100
+     }
+     ```
 
 # Creador:
 
