@@ -20,7 +20,7 @@ class Bodegas {
                 },
                 {
                     $sort: {
-                        nombre: 1
+                        Bodega_Nombre: 1
                     }
                 }
             ]
