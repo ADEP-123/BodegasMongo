@@ -1,8 +1,6 @@
 use("db_bodegas_mongo");
 const currentDate = new Date();
 
-db.createCollection("counters")
-
 //Coleccion usuers
 db.createCollection("users", {
     // capped: true,
@@ -208,7 +206,6 @@ db.users.insertMany([
         deleted_at: null
     }
 ]);
-
 
 //Coleccion productos
 db.createCollection("productos", {
@@ -811,8 +808,6 @@ db.productos.insertMany([
     }
 ]);
 
-
-
 //Coleccion bodegas
 db.createCollection("bodegas", {
     validator: {
@@ -1194,7 +1189,6 @@ db.bodegas.insertMany([
         deleted_at: null
     }
 ]);
-
 
 //Coleccion inventarios
 db.createCollection("inventarios", {
@@ -1717,8 +1711,6 @@ db.inventarios.insertMany([
     }
 ]);
 
-
-
 //Coleccion historiales
 db.createCollection("historiales", {
     validator: {
@@ -1893,4 +1885,14 @@ db.historiales.insertMany([
         "updated_at": new Date('2022-07-21 21:24:15'),
         "deleted_at": null
     }
+]);
+
+// Coleccion de contadores
+db.createCollection("counters")
+db.counters.insertMany([
+    { _id: "userId", sequence_value: 10 },
+    { _id: "productId", sequence_value: 50 },
+    { _id: "bodegaId", sequence_value: 30 },
+    { _id: "inventarioId", sequence_value: 47 },
+    { _id: "historialId", sequence_value: 11 }
 ]);

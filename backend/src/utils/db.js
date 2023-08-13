@@ -6,11 +6,13 @@ const collectionGen = async (coleccion) => {
     return newCollection;
 }
 
-const startTransaction = async (coleccion) => {
+const startTransaction = async () => {
     const db = await connection();
-    const transaccion = db.startTransaction();
-    return transaccion;
+    const session = db.client.startSession(); 
+    session.startTransaction();
+    return session;
 }
+
 export {
     collectionGen,
     startTransaction
