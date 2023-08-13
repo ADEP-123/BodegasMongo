@@ -4,7 +4,7 @@ import { getBodegasController, getProductsController } from '../controllers/getD
 const getInitRoute = () => {
     const router = Router()
     router.get("/bodegas", getBodegasController)
-    router.get("/products", getProductsController)
+    router.get("/productos", getProductsController)
 
     return router;
 }
