@@ -19,13 +19,15 @@ const postBodegaController = async (req, res, next) => {
 
 const postProductoController = async (req, res, next) => {
     try {
-        const { id, nombre, descripcion, estado, creador } = req.body;
+        const { nombre, descripcion, estado, creador } = req.body;
         const comprobarCreador = await comprobarUsuarioService(creador)
         if (comprobarCreador != 0) {
-            let result = await postProductoService(id, nombre, descripcion, estado, creador);
+            let result = await postProductoService(nombre, descripcion, estado, creador);
+            const idProducto = Number(result.insertedId)
             if (result.acknowledged == true) {
-                result = await postInventarioService(9999995522, 12, id, 100, creador)
-                res.status(200).json({ message: `El producto ${nombre} identificado con id: ${id} fue ingresado con exito en la bodega por defecto 12, con una cantidad inicial de 100` })
+                result = await postInventarioService(12, idProducto, 100, creador)
+                const idInventario = Number(result.insertedId)
+                res.status(200).json({ message: `El producto ${nombre} identificado con id: ${idProducto} fue ingresado con exito en la bodega por defecto 12, con una cantidad inicial de 100, inventario ${idInventario} del registro creado con exito` })
             }
         } else {
             res.status(500).json({ error: `Imposible realizar la insercion: el creador identificado con el id ${creador} no existe` })

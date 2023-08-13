@@ -93,7 +93,6 @@ Ejercicio practico para aprendizaje de mongo, se creo una base de datos simuland
    - Body esperado:
      ```json
      {
-       "id": 999999,
        "nombre": "Shampoo",
        "descripcion": "shampoo pelo seco",
        "estado": 1,

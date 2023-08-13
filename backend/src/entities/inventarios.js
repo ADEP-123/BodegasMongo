@@ -44,11 +44,23 @@ class Inventarios {
         }
     }
 
-    async postNewInventario(id, bodega, producto, cantidad, creador) {
+    async postNewInventario(bodega, producto, cantidad, creador) {
+        const session = await startTransaction();
+
         try {
-            const collection = await collectionGen("inventarios");
-            const result = collection.insertOne({
-                _id: id,
+            const countersCollection = await collectionGen("counters");
+            const counterDoc = await countersCollection.findOneAndUpdate(
+                { _id: "inventarioId" },
+                { $inc: { sequence_value: 1 } },
+                { session, returnOriginal: false, upsert: true }
+            );
+
+            const newBodegaId = counterDoc.value.sequence_value + 1;
+            // console.log("id:", newBodegaId);
+
+            const inventarioCollection = await collectionGen("inventarios");
+            const result = inventarioCollection.insertOne({
+                _id: newBodegaId,
                 id_bodega: bodega,
                 id_producto: producto,
                 cantidad: cantidad,
@@ -57,8 +69,14 @@ class Inventarios {
                 updated_at: null,
                 deleted_at: null
             });
+
+            await session.commitTransaction();
+            session.endSession();
+
             return result;
         } catch (error) {
+            await session.abortTransaction();
+            session.endSession();
             throw error;
         }
     }

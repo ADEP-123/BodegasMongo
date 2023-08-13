@@ -1,7 +1,6 @@
 import express from "express";
 
 const mongoErrorHandlingMiddleware = express();
-console.log("sadasdsadsa");
 mongoErrorHandlingMiddleware.use((err, req, res, next) => {
     console.log("no entra");
     console.log(err.name);

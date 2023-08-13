@@ -8,15 +8,15 @@ const postBodegaService = async ( nombre, responsable, estado, creador) => {
     return result;
 };
 
-const postProductoService = async (id, nombre, descripcion, estado, creador) => {
+const postProductoService = async ( nombre, descripcion, estado, creador) => {
     const producto = new Productos();
-    const result = await producto.postNewProduct(id, nombre, descripcion, estado, creador);
+    const result = await producto.postNewProduct( nombre, descripcion, estado, creador);
     return result;
 };
 
-const postInventarioService = async (id, bodega, producto, cantidad, creador) => {
+const postInventarioService = async ( bodega, producto, cantidad, creador) => {
     const inventario = new Inventarios();
-    const result = await inventario.postNewInventario(id, bodega, producto, cantidad, creador);
+    const result = await inventario.postNewInventario( bodega, producto, cantidad, creador);
     return result;
 };
 
