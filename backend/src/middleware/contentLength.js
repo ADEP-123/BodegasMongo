@@ -1,7 +1,7 @@
 
 const middlewareContentLengthInventario = (req, res, next, ) => {
-    // console.log(req.headers['content-length']);
-    req.headers['content-length'] > 86 ?
+    console.log(req.headers['content-length']);
+    req.headers['content-length'] > 116 ?
         res.status(413).send({
             status: 413,
             message: "El tamaño de la informacion enviada es incorrecta"
