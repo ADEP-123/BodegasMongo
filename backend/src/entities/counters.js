@@ -13,7 +13,7 @@ class Counters {
                 { session, returnOriginal: false, upsert: true }
             );
             const newId = Number(counterDoc.value.sequence_value + 1);
-            await session.commitTransaction();
+
             return { newId: newId, session: session };
         } catch (error) {
             await session.abortTransaction();

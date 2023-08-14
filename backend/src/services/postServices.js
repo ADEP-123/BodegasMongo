@@ -10,6 +10,7 @@ const postBodegaService = async (nombre, responsable, estado, creador) => {
     // console.log(newId);
     const bodega = new Bodegas();
     const result = await bodega.postNewBodega(newId, nombre, responsable, estado, creador);
+    await session.commitTransaction();
     session.endSession();
     return result;
 };
@@ -21,6 +22,7 @@ const postProductoService = async (nombre, descripcion, estado, creador) => {
     // console.log(newId);
     const producto = new Productos();
     const result = await producto.postNewProduct(newId, nombre, descripcion, estado, creador);
+    await session.commitTransaction();
     session.endSession();
     return result;
 };
@@ -32,6 +34,7 @@ const postInventarioService = async (bodega, producto, cantidad, creador) => {
     // console.log(newId);
     const inventario = new Inventarios();
     const result = await inventario.postNewInventario(newId, bodega, producto, cantidad, creador);
+    await session.commitTransaction();
     session.endSession();
     return result;
 };
