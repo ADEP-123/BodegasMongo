@@ -1,10 +1,11 @@
 import 'reflect-metadata';
 import { plainToClass } from 'class-transformer';
-import { acudienteDTO } from '../routes/dto/js/bodegaDTO.js';
+import { bodegasDTO } from '../routes/dto/js/bodegaDTO.js';
+import { productosDTO } from '../routes/dto/js/productosDTO.js';
 
-const middlewareTipoCitaDTO = (req, res, next) => {
+const middlewareBodegasDTO = (req, res, next) => {
     try {
-        let data = plainToClass(acudienteDTO, req.body, { excludeExtraneousValues: true });
+        let data = plainToClass(bodegasDTO, req.body, { excludeExtraneousValues: true });
         req.body = JSON.parse(JSON.stringify(data));
         next()
     } catch (err) {
@@ -12,6 +13,18 @@ const middlewareTipoCitaDTO = (req, res, next) => {
     }
 };
 
+const middlewareProductosDTO = (req, res, next) => {
+    try {
+        let data = plainToClass(productosDTO, req.body, { excludeExtraneousValues: true });
+        req.body = JSON.parse(JSON.stringify(data));
+        next()
+    } catch (err) {
+        res.status(err.status).send(err)
+    }
+};
+
+
 export {
-    middlewareTipoCitaDTO
+    middlewareBodegasDTO,
+    middlewareProductosDTO
 }

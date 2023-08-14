@@ -8,10 +8,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Expose, Transform } from "class-transformer";
-export class bodegasDTO {
-    constructor(nombre, id_responsable, estado, created_by) {
+export class productosDTO {
+    constructor(nombre, descripcion, estado, created_by) {
         this.nombre = nombre;
-        this.responsable = id_responsable;
+        this.descripcion = descripcion;
         this.estado = estado;
         this.creador = created_by;
     }
@@ -23,15 +23,15 @@ __decorate([
     else
         throw { status: 400, message: `El nombre es requerido` }; }, { toClassOnly: true }),
     __metadata("design:type", String)
-], bodegasDTO.prototype, "nombre", void 0);
+], productosDTO.prototype, "nombre", void 0);
 __decorate([
-    Expose({ name: "responsable" }),
+    Expose({ name: "descripcion" }),
     Transform(({ value, key }) => { if (value)
         return value;
     else
-        throw { status: 400, message: `El id del responsable es requerido` }; }, { toClassOnly: true }),
-    __metadata("design:type", Number)
-], bodegasDTO.prototype, "responsable", void 0);
+        throw { status: 400, message: `La descripcion producto es requerida` }; }, { toClassOnly: true }),
+    __metadata("design:type", String)
+], productosDTO.prototype, "descripcion", void 0);
 __decorate([
     Expose({ name: "estado" }),
     Transform(({ value, key }) => { if (value)
@@ -39,7 +39,7 @@ __decorate([
     else
         throw { status: 400, message: `El id del estado es requerido` }; }, { toClassOnly: true }),
     __metadata("design:type", Number)
-], bodegasDTO.prototype, "estado", void 0);
+], productosDTO.prototype, "estado", void 0);
 __decorate([
     Expose({ name: "creador" }),
     Transform(({ value, key }) => { if (value)
@@ -47,4 +47,4 @@ __decorate([
     else
         throw { status: 400, message: `El id del creador es requerido` }; }, { toClassOnly: true }),
     __metadata("design:type", Number)
-], bodegasDTO.prototype, "creador", void 0);
+], productosDTO.prototype, "creador", void 0);
