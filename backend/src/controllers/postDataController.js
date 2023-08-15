@@ -3,10 +3,12 @@ import { postBodegaService, postInventarioService, postProductoService } from ".
 
 const postBodegaController = async (req, res, next) => {
     try {
-        const { nombre, responsable, estado, creador } = req.body
-        const comprobarCreador = await comprobarUsuarioService(creador)
+        const { nombre, id_responsable, estado, created_by } = req.body
+        // console.log("req.body: ", req.body);
+        const comprobarCreador = await comprobarUsuarioService(created_by)
+        // console.log("comprobarCreador: ", comprobarCreador);
         if (comprobarCreador != 0) {
-            const result = await postBodegaService(nombre, responsable, estado, creador)
+            const result = await postBodegaService(nombre, id_responsable, estado, created_by)
             res.status(200).json({ message: "Registro insertado con exito", result })
 
         } else {
@@ -19,13 +21,13 @@ const postBodegaController = async (req, res, next) => {
 
 const postProductoController = async (req, res, next) => {
     try {
-        const { nombre, descripcion, estado, creador } = req.body;
-        const comprobarCreador = await comprobarUsuarioService(creador)
+        const { nombre, descripcion, estado, created_by } = req.body;
+        const comprobarCreador = await comprobarUsuarioService(created_by)
         if (comprobarCreador != 0) {
-            let result = await postProductoService(nombre, descripcion, estado, creador);
+            let result = await postProductoService(nombre, descripcion, estado, created_by);
             const idProducto = Number(result.insertedId)
             if (result.acknowledged == true) {
-                result = await postInventarioService(12, idProducto, 100, creador)
+                result = await postInventarioService(12, idProducto, 100, created_by)
                 const idInventario = Number(result.insertedId)
                 res.status(200).json({ message: `El producto ${nombre} identificado con id: ${idProducto} fue ingresado con exito en la bodega por defecto 12, con una cantidad inicial de 100, inventario ${idInventario} del registro creado con exito` })
             }
@@ -39,10 +41,10 @@ const postProductoController = async (req, res, next) => {
 
 const postInventarioController = async (req, res, next) => {
     try {
-        const { bodega, producto, cantidad, creador } = req.body
-        let result = await getCombinationProductStorageAmount(bodega, producto);
+        const { id_bodega, id_producto, cantidad, created_by } = req.body
+        let result = await getCombinationProductStorageAmount(id_bodega, id_producto);
         if (result == 0) {
-            result = await postInventarioService(bodega, producto, cantidad, creador)
+            result = await postInventarioService(id_bodega, id_producto, cantidad, created_by)
             const id = result.insertedId
             res.status(200).json({ message: `Inventario ${id} creado con exito` })
         } else {
