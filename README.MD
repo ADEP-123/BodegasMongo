@@ -4,7 +4,7 @@
 
 ---
 
-Ejercicio practico para aprendizaje de mongo, se creo una base de datos simulando el manejo de bodegas, teniento el cuenta el siguiente diagrama:
+Ejercicio practico para aprendizaje de mongo, se creo una base de datos simulando el manejo de bodegas, teniendo el cuenta el siguiente diagrama:
 
 ![Diagrama en el que se fundamento la base de datos](./imgs/database.png)
 
