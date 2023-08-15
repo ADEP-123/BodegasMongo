@@ -55,6 +55,22 @@ Ejercicio practico para aprendizaje de mongo, se creo una base de datos simuland
 
 ---
 
+**Antes de poder realizar cualquier consulta tenga en cuenta lo siguiente:** Esta aplicacion cuenta con un sistema de autorizaciones por token, para obtener una autorizacion para acceder a los endpoint, por cada coleccion el sistema debe validar que el token enviado corresponda a la coleccion a la cual se desea hacer la peticion, por lo tanto usted debe hacer lo siguiente:
+
+1. Acceda al siguiente endpoint para generar el token deseado:
+
+- UrlDefault: http://127.10.10.10:5010/campus/login/:Coleccion
+- Descripcion: Debe cambiar el campo `:Coleccion` de la url por cualquiera de los siguientes segun lo requiera:
+  - bodegasDTO
+  - inventariosDTO
+  - productosDTO
+  - updateInventariosDTO
+- Ej: http://127.10.10.10:5010/campus/login/bodegasDTO
+
+2. Compie el token que sera devuelto como mensaje y envielo dentro del header Authorization
+
+Ahora si podra interactuar con las consultas de la siguiente manera: 
+
 1. Listar todas las bodegas alfabéticamente:
 
 - UrlDefault: http://127.10.10.10:5010/campus/get/bodegas
