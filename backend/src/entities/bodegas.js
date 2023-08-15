@@ -1,4 +1,8 @@
 import { collectionGen } from "../utils/db.js";
+import Counters from "./counters.js";
+const counter = new Counters()
+
+
 class Bodegas {
     constructor() { }
     async getAllBodegas() {
@@ -31,12 +35,16 @@ class Bodegas {
         }
     }
 
-    async postNewBodega(id, nombre, responsable, estado, creador) {
+    async postNewBodega(nombre, responsable, estado, creador) {
+        let session
         try {
+            const nuevaSesion = await counter.getNewId("bodegas")
+            const { newId, session: newSession } = nuevaSesion;
+            session = newSession;
             const bodegasCollection = await collectionGen("bodegas");
             const result = await bodegasCollection.insertOne(
                 {
-                    _id: id,
+                    _id: newId,
                     nombre: nombre,
                     id_responsable: responsable,
                     estado: estado,
@@ -47,9 +55,14 @@ class Bodegas {
                     deleted_at: null
                 },
             );
+            await session.commitTransaction();
             return result;
         } catch (error) {
             throw error;
+        } finally {
+            if (session) {
+                session.endSession();
+            }
         }
     }
 

@@ -1,4 +1,7 @@
-import { collectionGen, startTransaction } from "../utils/db.js";
+import { collectionGen } from "../utils/db.js";
+import Counters from "./counters.js";
+const counter = new Counters()
+
 class Inventarios {
     constructor() { }
 
@@ -44,13 +47,15 @@ class Inventarios {
         }
     }
 
-    async postNewInventario(id, bodega, producto, cantidad, creador) {
-
+    async postNewInventario(bodega, producto, cantidad, creador) {
+        let session
         try {
-           
+            const nuevaSesion = await counter.getNewId("bodegas")
+            const { newId, session: newSession } = nuevaSesion;
+            session = newSession;
             const inventarioCollection = await collectionGen("inventarios");
             const result = inventarioCollection.insertOne({
-                _id: id,
+                _id: newId,
                 id_bodega: bodega,
                 id_producto: producto,
                 cantidad: cantidad,
@@ -58,13 +63,17 @@ class Inventarios {
                 created_at: new Date(),
                 updated_at: null,
                 deleted_at: null
-            });          
+            });
+            await session.commitTransaction();
             return result;
         } catch (error) {
             throw error;
+        } finally {
+            if (session) {
+                session.endSession();
+            }
         }
     }
-
     async contarCombinacion(bodega, producto) {
         try {
             const collection = await collectionGen("inventarios");
