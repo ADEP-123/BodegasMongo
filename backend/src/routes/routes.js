@@ -11,7 +11,7 @@ const initApiRoutes = () => {
     router.use("/login", appToken)
     router.use("/get", authorizationMiddleware, middlewareRateLimit, getInitRoute())
     router.use("/post", authorizationMiddleware, middlewareRateLimit, postInitRoute())
-    router.use("/put", authorizationMiddleware, middlewareRateLimit, putInitRoute())
+    router.use("/put", authorizationMiddleware,middlewareRateLimit, putInitRoute())
     return router
 }
 
