@@ -50,7 +50,7 @@ class Inventarios {
     async postNewInventario(bodega, producto, cantidad, creador) {
         let session
         try {
-            const nuevaSesion = await counter.getNewId("bodegas")
+            const nuevaSesion = await counter.getNewId("inventarios")
             const { newId, session: newSession } = nuevaSesion;
             session = newSession;
             const inventarioCollection = await collectionGen("inventarios");

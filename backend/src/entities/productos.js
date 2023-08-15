@@ -8,7 +8,7 @@ class Productos {
     async postNewProduct(nombre, descripcion, estado, creador) {
         let session
         try {
-            const nuevaSesion = await counter.getNewId("bodegas")
+            const nuevaSesion = await counter.getNewId("productos")
             const { newId, session: newSession } = nuevaSesion;
             session = newSession;
             const productosCollection = await collectionGen("productos");
