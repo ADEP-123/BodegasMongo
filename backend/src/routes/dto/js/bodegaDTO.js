@@ -9,11 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Expose, Transform } from "class-transformer";
 export class bodegasDTO {
-    constructor(nombre, id_responsable, estado, created_by) {
-        this.nombre = nombre;
-        this.responsable = id_responsable;
-        this.estado = estado;
-        this.creador = created_by;
+    constructor(data) {
+        Object.assign(this, data);
+        this.nombre = "FAKE";
+        this.id_responsable = 1111;
+        this.estado = 1111;
+        this.created_by = 1111;
     }
 }
 __decorate([
@@ -31,7 +32,7 @@ __decorate([
     else
         throw { status: 400, message: `El id del responsable es requerido` }; }, { toClassOnly: true }),
     __metadata("design:type", Number)
-], bodegasDTO.prototype, "responsable", void 0);
+], bodegasDTO.prototype, "id_responsable", void 0);
 __decorate([
     Expose({ name: "estado" }),
     Transform(({ value, key }) => { if (value)
@@ -47,4 +48,4 @@ __decorate([
     else
         throw { status: 400, message: `El id del creador es requerido` }; }, { toClassOnly: true }),
     __metadata("design:type", Number)
-], bodegasDTO.prototype, "creador", void 0);
+], bodegasDTO.prototype, "created_by", void 0);

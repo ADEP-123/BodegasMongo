@@ -9,11 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Expose, Transform } from "class-transformer";
 export class updateInventariosDTO {
-    constructor(id_bodega_origen, id_bodega_destino, id_producto, cantidad) {
-        this.bodega1 = id_bodega_origen;
-        this.bodega2 = id_bodega_destino;
-        this.producto = id_producto;
-        this.cantidad = cantidad;
+    constructor(data) {
+        Object.assign(this, data);
+        this.bodega1 = 1111;
+        this.bodega2 = 1111;
+        this.producto = 1111;
+        this.cantidad = 1111;
     }
 }
 __decorate([

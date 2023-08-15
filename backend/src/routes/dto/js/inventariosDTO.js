@@ -9,11 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Expose, Transform } from "class-transformer";
 export class inventariosDTO {
-    constructor(id_bodega, id_producto, cantidad, created_by) {
-        this.bodega = id_bodega;
-        this.producto = id_producto;
-        this.cantidad = cantidad;
-        this.creador = created_by;
+    constructor(data) {
+        Object.assign(this, data);
+        this.id_bodega = 1111;
+        this.id_producto = 1111;
+        this.cantidad = 1111;
+        this.created_by = 1111;
     }
 }
 __decorate([
@@ -23,7 +24,7 @@ __decorate([
     else
         throw { status: 400, message: `El nombre es requerido` }; }, { toClassOnly: true }),
     __metadata("design:type", Number)
-], inventariosDTO.prototype, "bodega", void 0);
+], inventariosDTO.prototype, "id_bodega", void 0);
 __decorate([
     Expose({ name: "producto" }),
     Transform(({ value, key }) => { if (value)
@@ -31,7 +32,7 @@ __decorate([
     else
         throw { status: 400, message: `El id del producto es requerido` }; }, { toClassOnly: true }),
     __metadata("design:type", Number)
-], inventariosDTO.prototype, "producto", void 0);
+], inventariosDTO.prototype, "id_producto", void 0);
 __decorate([
     Expose({ name: "cantidad" }),
     Transform(({ value, key }) => { if (value)
@@ -47,4 +48,4 @@ __decorate([
     else
         throw { status: 400, message: `El id del creador es requerido` }; }, { toClassOnly: true }),
     __metadata("design:type", Number)
-], inventariosDTO.prototype, "creador", void 0);
+], inventariosDTO.prototype, "created_by", void 0);

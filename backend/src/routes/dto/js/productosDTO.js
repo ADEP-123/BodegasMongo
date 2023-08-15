@@ -9,11 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Expose, Transform } from "class-transformer";
 export class productosDTO {
-    constructor(nombre, descripcion, estado, created_by) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.estado = estado;
-        this.creador = created_by;
+    constructor(data) {
+        Object.assign(this, data);
+        this.nombre = "FAKE";
+        this.descripcion = "Super Fake";
+        this.estado = 1111;
+        this.created_by = 1111;
     }
 }
 __decorate([
@@ -47,4 +48,4 @@ __decorate([
     else
         throw { status: 400, message: `El id del creador es requerido` }; }, { toClassOnly: true }),
     __metadata("design:type", Number)
-], productosDTO.prototype, "creador", void 0);
+], productosDTO.prototype, "created_by", void 0);
